@@ -23,14 +23,25 @@ const images = [
   },
 ];
 
-for (let el of images)
-  document
-    .querySelector("#gallery")
-    .insertAdjacentHTML(
-      "beforeEnd",
-      `<li><img src="${el.url}" alt="${el.alt}"></li>`
-    );
+const galleryContainerRef = document.querySelector('#gallery');
 
-var addClassUl = document.querySelector("#gallery");
+const makeGallery = ({ url, alt }) => {
+  const makeImg = document.createElement('img');
+  return `<li><img src="${url}" alt="${alt}"></li>`;
+};
 
-addClassUl.className = "gallery"; // додаємо елементу клас
+const gallery = images.map(makeGallery);
+galleryContainerRef.insertAdjacentHTML("afterbegin", gallery.join(""));
+//
+//
+// for (let el of images)
+//   document
+//     .querySelector("#gallery")
+//     .insertAdjacentHTML(
+//       "beforeEnd",
+//       `<li><img src="${el.url}" alt="${el.alt}"></li>`
+//     );
+
+// const addClassUl = document.querySelector("#gallery");
+
+// addClassUl.className = "gallery"; // додаємо елементу клас
