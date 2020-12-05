@@ -20,23 +20,38 @@ const ingredients = [
 //   "Картопля",
 // ];
 
-const ulIngredientsRef = document.querySelector("#ingredients"); // створює ссилку на існуючий <ul id="ingredients></ul>
+const ulIngredientsRef = document.querySelector("#ingredients");
 
-const creatingList = (ingredient) => {
-  const createLiRef = document.createElement("li"); // створює ссилку на <li></li> в DOM
-  createLiRef.innerHTML = ingredient;
-
-  ulIngredientsRef.appendChild(createLiRef); // добавляє <li>(createLiRef) в <ul>(ulIngredientsRef) в HTML
-  return ulIngredientsRef;
+const creatingList = (ingridient) => {
+  const createLiRef = document.createElement("li");
+  createLiRef.textContent = ingridient;
+  return createLiRef;
 };
 
-ingredients.forEach((ingredient) => {
-  console.log(creatingList(ingredient));
-});
+const ingredientsList = ingredients.map(creatingList);
+ulIngredientsRef.append(...ingredientsList);
 
+//
+//
+// const ulIngredientsRef = document.querySelector("#ingredients"); // створює ссилку на існуючий <ul id="ingredients></ul>
+
+// const creatingList = (ingredient) => {
+//   const createLiRef = document.createElement("li"); // створює ссилку на <li></li> в DOM
+//   createLiRef.innerHTML = ingredient;
+
+//   ulIngredientsRef.appendChild(createLiRef); // добавляє <li>(createLiRef) в <ul>(ulIngredientsRef) в HTML
+//   return ulIngredientsRef;
+// };
+
+// ingredients.forEach((ingredient) => {
+//   console.log(creatingList(ingredient));
+// });
+//
+//
 // setTimeout(() => { // по 3 сек змінює інгредієнти
 //   ulIngredientsRef.innerHTML = "";
 //   ingredients2.forEach((ingredient) => {
 //     console.log(creatingList(ingredient));
 //   });
 // }, 3000);
+
